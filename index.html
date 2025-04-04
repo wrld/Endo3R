@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Endo3R</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <!-- <script src="./static/js/script.js"></script> -->
+
+  <style>
+    .video-item {
+      width: 100%; 
+      height: 300px; 
+      object-fit: cover; 
+    }
+  </style>
+
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Endo3R: Unified Online Reconstruction from Dynamic Monocular Endoscopic Video</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://wrld.github.io/" target="_blank">Jiaxin Guo</a><sup>1</sup>,</span>
+              <span class="author-block">
+                Wenzhen Dong</A><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=nhbSplwAAAAJ&hl=en" target="_blank">Tianyu Huang</a><sup>1,2</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=NIP-G-cAAAAJ&hl=en" target="_blank">Hao Ding</a><sup>3</sup>,</span>
+              <span class="author-block">
+                <a href="https://hk.linkedin.com/in/ziyi-wang-5ba98a167" target="_blank">Ziyi Wang</a><sup>1</sup>,</span>                
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=ra-BCykAAAAJ&hl=zh-CN" target="_blank">Haomin Kuang</a><sup>4</sup>,</span> <br>
+              <span class="author-block">
+                <a href="https://www.cse.cuhk.edu.hk/~qdou/" target="_blank">Qi Dou</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://www4.mae.cuhk.edu.hk/peoples/liu-yun-hui/" target="_blank">Yun-Hui Liu</a><sup>1,2</sup><sup>†</sup></span>
+
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block" style="margin-right: 40px;">The Chinese University of Hong Kong<sup>1</sup></span>
+              <span class="author-block" style="margin-right: 40px;">Hong Kong Centre For Logistics Robotics<sup>2</sup></span>
+              <span class="author-block" style="margin-right: 40px;">Johns Hopkins University<sup>3</sup></span>
+              <span class="author-block" style="margin-right: 40px;">Shanghai Jiao Tong University<sup>4</sup></span>
+              
+            </div>
+            <div class="column has-text-centered">
+                <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href=""
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code coming soon</span>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+    <!-- abstract -->
+    <p class="title is-3 mt-5 has-text-centered"> Abstract </p>
+    <h2 class="title is-3" style="text-align: center; font-size: 125%;">
+  </h2>
+  <img src="./static/images/input.jpg">
+    <p class="content is-size-8 has-text-left">
+      Reconstructing 3D scenes from monocular surgical videos can enhance surgeon's perception and therefore plays a vital role in various computer-assisted surgery tasks. However, achieving scale-consistent reconstruction remains an open challenge due to inherent issues in endoscopic videos, such as dynamic deformations and textureless surfaces. Despite recent advances, current methods either rely on calibration or instrument priors to estimate scale, or employ SfM-like multi-stage pipelines, leading to error accumulation and requiring offline optimization. In this paper, <b>we present Endo3R, a unified 3D foundation model for online scale-consistent reconstruction from monocular surgical video, without any priors or extra optimization</b>. Our model unifies the tasks by predicting globally aligned pointmaps, scale-consistent video depths, and camera parameters without any offline optimization. The core contribution of our method is expanding the capability of the recent pairwise reconstruction model to long-term incremental dynamic reconstruction by an uncertainty-aware dual memory mechanism. 
+      The mechanism maintains history tokens of both short-term dynamics and long-term spatial consistency. Notably, to tackle the highly dynamic nature of surgical scenes, we measure the uncertainty of tokens via Sampson distance and filter out tokens with high uncertainty. Regarding the scarcity of endoscopic datasets with true depth and camera poses, we further devise a self-supervised mechanism with a novel dynamics-aware flow loss. Abundant experiments on SCARED and Hamlyn datasets demonstrate our superior performance in zero-shot surgical video depth prediction and camera pose estimation with online efficiency. Code will be released.
+    </p>
+      <!--/ Abstract. -->
+
+      <!-- Paper video. -->
+    </div>
+  </section>
+
+
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div class="has-text-centered">
+          <h2 class="title is-3">Qualitative Results</h2>
+          <h2 class="title is-3" style="font-size: 130%; margin-bottom: 10px;">Visualization of Our Estimated Video Depth</h2>
+          <div id="results-carousel" class="carousel results-carousel" data-slides-to-show="2">
+            <div class="item item-rgb1">
+              <video poster="" id="rgb1" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/depth/rgb1.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-depth1">
+              <video poster="" id="depth1" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/depth/depth1.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-rgb2">
+              <video poster="" id="rgb2" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/depth/rgb2.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-depth2">
+              <video poster="" id="depth2" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/depth/depth2.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-rgb3">
+              <video poster="" id="rgb3" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/depth/rgb3.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-depth3">
+              <video poster="" id="depth3" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/depth/depth3.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-rgb4">
+              <video poster="" id="rgb4" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/depth/rgb4.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-depth4">
+              <video poster="" id="depth4" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/depth/depth4.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- <h3 class="title has-text-centered">
+    Comparison Gallery
+  </h3>
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div id="results-carousel-extrap" class="carousel results-carousel">
+  
+          <div class="threeitem">
+            <div class="twentytwenty-container twentytwenty-container-left">
+              <div class="cmpcontent">
+                <video muted autoplay="autoplay" loop="loop" width="100%">
+                  <source src="./static/videos/depth/rgb1.mp4" type="video/mp4">
+                  </video> 
+              </div>
+              <div class="cmpcontent">
+                <video muted autoplay="autoplay" loop="loop" width="100%">
+                  <source src="./static/videos/depth/depth1.mp4" type="video/mp4">
+                  </video> 
+              </div>
+            </div>
+  
+            <div class="twentytwenty-container twentytwenty-container-left">
+              <div class="cmpcontent">
+                <video muted autoplay="autoplay" loop="loop" width="100%">
+                  <source src="./static/videos/depth/rgb2.mp4" type="video/mp4">
+                  </video> 
+              </div>
+              <div class="cmpcontent">
+                <video muted autoplay="autoplay" loop="loop" width="100%">
+                  <source src="./static/videos/depth/depth2.mp4" type="video/mp4">
+                  </video> 
+              </div>
+            </div>
+  
+            <div class="twentytwenty-container twentytwenty-container-left">
+              <div class="cmpcontent">
+                <video muted autoplay="autoplay" loop="loop" width="100%">
+                  <source src="./static/videos/depth/rgb3.mp4" type="video/mp4">
+                  </video> 
+              </div>
+              <div class="cmpcontent">
+                <video muted autoplay="autoplay" loop="loop" width="100%">
+                  <source src="./static/videos/depth/depth3.mp4" type="video/mp4">
+                  </video> 
+              </div>
+            </div> 
+            <div class="twentytwenty-container twentytwenty-container-left">
+              <div class="cmpcontent">
+                <video muted autoplay="autoplay" loop="loop" width="100%">
+                  <source src="./static/videos/depth/rgb4.mp4" type="video/mp4">
+                  </video> 
+              </div>
+              <div class="cmpcontent">
+                <video muted autoplay="autoplay" loop="loop" width="100%">
+                  <source src="./static/videos/depth/depth4.mp4" type="video/mp4">
+                  </video> 
+              </div>
+            </div>            
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div class=" has-text-centered">
+          <h2 class="title is-3" style="text-align: center; font-size: 130%; margin-top: -2%; margin-bottom: -0.1%;">Visualization of Our Estimated Point Clouds & Poses</h2>
+          <div id="results-carousel" class="carousel results-carousel" data-slides-to-show="2">
+            <div class="item item-steve">
+              <video poster="" id="steve" class="video-item" autoplay controls muted loop playsinline>
+                <source src="./static/videos/poses1/1.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-chair-tp">
+              <video poster="" id="chair-tp" class="video-item" autoplay controls muted loop playsinline>
+                <source src="./static/videos/poses1/2.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-shiba">
+              <video poster="" id="shiba" class="video-item" autoplay controls muted loop playsinline>
+                <source src="./static/videos/poses1/3.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-fullbody">
+              <video poster="" id="fullbody" class="video-item" autoplay controls muted loop playsinline>
+                <source src="./static/videos/poses1/4.mp4" type="video/mp4">
+              </video>
+            </div>
+            <!-- <div class="item item-toby">
+              <video poster="" id="toby" class="video-item" autoplay controls muted loop playsinline>
+                <source src="./static/videos/poses1/5.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-toby">
+              <video poster="" id="toby" class="video-item" autoplay controls muted loop playsinline>
+                <source src="./static/videos/poses1/6.mp4" type="video/mp4">
+              </video>
+            </div>    
+            <div class="item item-steve">
+              <video poster="" id="steve" class="video-item" autoplay controls muted loop playsinline>
+                <source src="./static/videos/poses1/7.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-chair-tp">
+              <video poster="" id="chair-tp" class="video-item" autoplay controls muted loop playsinline>
+                <source src="./static/videos/poses1/8.mp4" type="video/mp4">
+              </video>
+            </div> -->
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div class=" has-text-centered">
+          <!-- <h2 class="title is-3" style="text-align: center; font-size: 130%; margin-top: -2%; margin-bottom: -0.1%;">Visualization of Our Estimated Point Clouds & Poses</h2> -->
+          <div id="results-carousel" class="carousel results-carousel" data-slides-to-show="2">
+            <!-- <div class="item item-steve">
+              <video poster="" id="steve" class="video-item" autoplay controls muted loop playsinline>
+                <source src="./static/videos/poses1/1.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-chair-tp">
+              <video poster="" id="chair-tp" class="video-item" autoplay controls muted loop playsinline>
+                <source src="./static/videos/poses1/2.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-shiba">
+              <video poster="" id="shiba" class="video-item" autoplay controls muted loop playsinline>
+                <source src="./static/videos/poses1/3.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-fullbody">
+              <video poster="" id="fullbody" class="video-item" autoplay controls muted loop playsinline>
+                <source src="./static/videos/poses1/4.mp4" type="video/mp4">
+              </video> -->
+            <!-- </div> -->
+            <div class="item item-toby">
+              <video poster="" id="toby" class="video-item" autoplay controls muted loop playsinline>
+                <source src="./static/videos/poses1/5.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-toby">
+              <video poster="" id="toby" class="video-item" autoplay controls muted loop playsinline>
+                <source src="./static/videos/poses1/6.mp4" type="video/mp4">
+              </video>
+            </div>    
+            <div class="item item-steve">
+              <video poster="" id="steve" class="video-item" autoplay controls muted loop playsinline>
+                <source src="./static/videos/poses1/7.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-chair-tp">
+              <video poster="" id="chair-tp" class="video-item" autoplay controls muted loop playsinline>
+                <source src="./static/videos/poses1/8.mp4" type="video/mp4">
+              </video>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Concurrent Work. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Pipeline</h2>
+          <div class="content has-text-justified">
+            <img src="./static/images/pipeline.jpg">
+            <p align="justify">Given monocular surgical video as input, we present <b>Endo3R</b> a unified 3D surgical foundation model for online scale-consistent reconstruction from monocular endoscopic video <b>without any prior information or extra optimization</b>, predicting globally aligned pointmaps, scale-consistent video depth, camera poses and intrinsics. </p>
+            <!-- <img src="./static/images/input.jpg" style="width:100%; display: block; margin: 0 auto;">
+            <p align="justify">Given monocular surgical video as input, our Endo3R allows feed-forward output of global pointmaps, scale-consistent depth, and camera parameters.              -->
+            <img src="./static/images/flow.jpg" style="width:100%; display: block; margin: 0 auto;">
+            <p align="justify">Regarding the lack of training datasets, we introduce self-supervised training scheme for data without ground-truth poses and depths. Namely, a dynamics-aware flow loss is designed to enforce the cross-frame temporal consistency.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <h3 class="title has-text-centered">
+    Quanlitative Comparisons
+  </h3>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Concurrent Work. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <!-- <h2 class="title is-3">Qualitative Comparisons</h2> -->
+					<img src="./static/images/result.jpg" style="width:100%; display: block; margin: 0 auto;">
+          <p class="center-text" style="width: 100%; text-align: center; margin: 0 auto;">
+            Fig 1. Qualitative resultsof monocular depth estimation.
+          </p>                      
+					<img src="./static/images/result2.jpg" style="width:100%; display: block; margin-top: 3%;">
+
+          <p class="center-text" style="width: 100%; text-align: center; margin: 0 auto;">
+            Fig 2. Qualitative comparison of novel view synthesis on DL3DV dataset.
+          </p>            
+        </div>
+      </div>
+    </div>
+  </section>
+  <h3 class="title has-text-centered">
+    Quantitative Comparisons
+  </h3>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <img src="./static/images/table1.jpg" style="width:90%; display: block; margin: 0 auto;">
+          <p class="center-text" style="width: 100%; text-align: center; margin: 0 auto;">
+            Table 1. Quantitative comparison with depth estimation methods.
+          </p> 
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <img src="./static/images/table2.jpg" style="width:60%; display: block; margin: 0 auto;">
+          <p class="center-text" style="width: 100%; text-align: center; margin: 0 auto;">
+            Table 2. Comparison of Pose Estimation on the SCARED Dataset.
+          </p> 
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+					<img src="./static/images/table3.jpg" style="width:40%">
+
+          <p class="center-text" style="width: 70%; text-align: left; margin: 0 auto;">
+            Table 3. Ablation study of Endo3R for different components
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+
+  <script>
+    new BeforeAfter({
+      id: '#example1'
+    });
+    new BeforeAfter({
+      id: '#example2'
+    });
+    new BeforeAfter({
+      id: '#example4'
+    });
+    new BeforeAfter({
+      id: '#example5'
+    });
+
+  </script>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website borrowed template from <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a> and <a href="https://github.com/haofeixu/haofeixu.github.io/tree/master/depthsplat">depthsplat</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
