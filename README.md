@@ -1,8 +1,8 @@
 <p align="center">
   <h2 align="center">Endo3R: Unified Online Reconstruction from Dynamic Monocular Endoscopic Video</h2>
-  <p align="center">
-  <strong>MICCAI 2025 (Early Accept)</strong>
-  </p>
+  <h3 align="center">MICCAI 2025 (Early Accept)</h3>  
+  <h3 align="center"><a href="https://arxiv.org/abs/2504.03198">Paper</a> | <a href="https://wrld.github.io/Endo3R/">Project Page</a> </h3>
+  <div align="center"></div>
   <p align="center">
     <a href="https://wrld.github.io/"><strong>Jiaxin Guo</strong></a><sup>1</sup>&nbsp;&nbsp;&nbsp;
     <strong>Wenzhen Dong</strong></a><sup>2</sup>&nbsp;&nbsp;&nbsp;
