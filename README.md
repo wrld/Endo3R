@@ -19,7 +19,7 @@
 </p>
 
 
-The repository contains the official implementation for the paper [Endo3R: Unified Online Reconstruction from Dynamic Monocular Endoscopic Video](https://arxiv.org/abs/2409.02917). In this paper, we present <b>Endo3R</b>, a unified 3D surgical foundation model for online scale-consistent reconstruction from monocular endoscopic video <b>without any prior information or extra optimization</b>, predicting globally aligned pointmaps, scale-consistent video depth, camera poses and intrinsics.
+The repository contains the official implementation for the paper [Endo3R: Unified Online Reconstruction from Dynamic Monocular Endoscopic Video](https://arxiv.org/abs/2504.03198). In this paper, we present <b>Endo3R</b>, a unified 3D surgical foundation model for online scale-consistent reconstruction from monocular endoscopic video <b>without any prior information or extra optimization</b>, predicting globally aligned pointmaps, scale-consistent video depth, camera poses and intrinsics.
 
 # Codes & Models
 Coming Soon.
